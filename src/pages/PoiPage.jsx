@@ -5,13 +5,13 @@ import ListPoiComp from "../components/ListPoiComp";
 export default function PoiPage() {
   const [poiList, setPoiList] = useState([]);
 
-  const fetchPOI = () => {
+  const fetchEveryPoi = () => {
     axios.get(`${import.meta.env.VITE_BE_URL}/poi`).then((res) => {
       setPoiList(res.data.data);
     });
   };
 
-  useEffect(fetchPOI, []);
+  useEffect(fetchEveryPoi, []);
 
   return (
     <>
