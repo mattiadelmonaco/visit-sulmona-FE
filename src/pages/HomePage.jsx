@@ -6,7 +6,9 @@ export default function HomePage() {
       <div>
         <Jumbotron />
       </div>
-      <h1>HomePage</h1>
+      <div className="container px-10 mx-auto">
+        <h1>HomePage</h1>
+      </div>
     </>
   );
 }

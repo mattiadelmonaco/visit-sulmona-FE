@@ -48,7 +48,7 @@ export default function Header() {
             <NavLink to="/">HomePage</NavLink>
           </li>
           <li>
-            <NavLink to="/all">Tutte le attrazioni e attività</NavLink>
+            <NavLink to="/poi">Tutte le attrazioni e attività</NavLink>
           </li>
         </ul>
       </nav>
