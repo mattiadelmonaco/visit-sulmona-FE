@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
+import { Link, NavLink } from "react-router";
 
 export default function Header() {
   const [types, setTypes] = useState([]);
@@ -41,6 +42,16 @@ export default function Header() {
           <h1>Header</h1>
         </div>
       </div>
+      <nav className="bg-white py-3 mt-3">
+        <ul className="flex gap-5 justify-center">
+          <li>
+            <NavLink to="/">HomePage</NavLink>
+          </li>
+          <li>
+            <NavLink to="/all">Tutte le attrazioni e attività</NavLink>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 }
