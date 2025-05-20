@@ -13,15 +13,15 @@ export default function Header() {
   useEffect(fetchTypes, []);
 
   return (
-    <header className="bg-[#99031e] shadow-2xl py-5">
+    <header className="bg-[#99031e] shadow-lg py-3">
       <div className="container px-10 mx-auto">
         <div className="flex justify-between items-center">
-          <div className="bg-white rounded-full py-5">
+          <div className="bg-white rounded-full py-2">
             <a href="/">
               <img
                 src="./images/visits-sulmona-logo.svg"
                 alt="Logo Visits Sulmona"
-                width="120px"
+                width="110px"
               />
             </a>
           </div>
