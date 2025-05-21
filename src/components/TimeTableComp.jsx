@@ -8,48 +8,65 @@ export default function TimeTableComp({ days }) {
   if (!hasOrari) return null;
 
   return (
-    <div>
-      <h3 className="text-xl font-semibold mt-6 mb-2">Orari di apertura</h3>
-      <table className="table-auto border border-collapse w-full">
-        <thead>
-          <tr>
-            <th className="border px-4 py-2">Giorno</th>
-            <th className="border px-4 py-2">Mattina</th>
-            <th className="border px-4 py-2">Pomeriggio</th>
-          </tr>
-        </thead>
-        <tbody>
-          {days.map((day) => {
-            const {
-              first_opening,
-              first_closing,
-              second_opening,
-              second_closing,
-            } = day.pivot;
+    <div className="bg-white p-6 rounded-lg shadow-sm">
+      <h3 className="text-xl font-semibold mb-4">Orari di apertura</h3>
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Giorno
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Mattina
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                Pomeriggio
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {days.map((day) => {
+              const {
+                first_opening,
+                first_closing,
+                second_opening,
+                second_closing,
+              } = day.pivot;
 
-            const morning =
-              first_opening && first_closing
-                ? `${first_opening.slice(0, 5)} - ${first_closing.slice(0, 5)}`
-                : "Chiuso";
+              const morning =
+                first_opening && first_closing
+                  ? `${first_opening.slice(0, 5)} - ${first_closing.slice(
+                      0,
+                      5
+                    )}`
+                  : "Chiuso";
 
-            const afternoon =
-              second_opening && second_closing
-                ? `${second_opening.slice(0, 5)} - ${second_closing.slice(
-                    0,
-                    5
-                  )}`
-                : "Chiuso";
+              const afternoon =
+                second_opening && second_closing
+                  ? `${second_opening.slice(0, 5)} - ${second_closing.slice(
+                      0,
+                      5
+                    )}`
+                  : "Chiuso";
 
-            return (
-              <tr key={day.id}>
-                <td className="border px-4 py-2">{day.name}</td>
-                <td className="border px-4 py-2">{morning}</td>
-                <td className="border px-4 py-2">{afternoon}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+              return (
+                <tr key={day.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {day.name}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {morning}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {afternoon}
+                  </td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }

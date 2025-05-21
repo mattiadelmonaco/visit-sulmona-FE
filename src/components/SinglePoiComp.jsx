@@ -3,167 +3,187 @@ import TimeTableComp from "./TimeTableComp";
 export default function SinglePoiComp({ poi }) {
   console.log(poi);
   return (
-    <>
-      <div className="container mx-auto px-10 pb-7">
-        {/* nome e tipologia */}
-        <div className="flex items-center">
-          {poi.name && (
-            <h1 className="text-3xl md:text-4xl text-center font-bold text-red-700 py-10">
-              {poi.name}
-            </h1>
-          )}
+    <div className="bg-gray-100 py-8 my-10 rounded-2xl shadow-xl">
+      <div className="container mx-auto px-4 md:px-10 max-w-7xl">
+        <div className="lg:grid lg:grid-cols-3 lg:gap-8">
+          <div className="lg:col-span-2">
+            {/* nome e tipologia */}
+            <div className="flex flex-col md:flex-row md:items-center md:gap-4 mb-6">
+              {poi.name && (
+                <h1 className="text-3xl md:text-4xl font-bold text-red-700 mb-2 md:mb-0">
+                  {poi.name}
+                </h1>
+              )}
+              {poi.type && (
+                <span className="inline-block bg-red-100 text-red-700 px-3 py-1 rounded-full">
+                  {poi.type.name}
+                </span>
+              )}
+            </div>
 
-          {poi.type && <p>Tipologia: {poi.type.name}</p>}
-        </div>
-        {/* /nome e tipologia */}
+            {/* periodo evento se presente */}
+            {poi.start_date || poi.end_date ? (
+              <div className="flex gap-2 items-center mb-4 text-gray-700">
+                <h3 className="font-semibold">Periodo:</h3>
+                <p>
+                  dal {poi.start_date} al {poi.end_date}
+                </p>
+              </div>
+            ) : null}
 
-        {/* periodo evento se presente */}
-        {poi.start_date || poi.end_date ? (
-          <div className="flex gap-2">
-            <h3>Periodo:</h3>
-            <p>
-              dal {poi.start_date} al {poi.end_date}
-            </p>
+            {/* tag */}
+            {poi.tags ? (
+              <div className="flex flex-wrap gap-2 items-center mb-6 text-white">
+                {poi.tags.map((tag) => (
+                  <div
+                    key={tag.id}
+                    style={{ backgroundColor: tag.color }}
+                    className="px-3 py-1 rounded-full text-sm font-medium shadow-sm"
+                  >
+                    <i className="fa-solid fa-hashtag"></i> {tag.name}
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-red-700 mb-6">Nessun tag associato</p>
+            )}
+
+            {/* immagine copertina */}
+            <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
+              {poi.first_image ? (
+                <img
+                  src={`${import.meta.env.VITE_BE_IMG_URL}${
+                    poi.first_image.path
+                  }`}
+                  alt={`Immagine di copertina di ${poi.name}`}
+                  className="w-full h-[400px] object-cover"
+                />
+              ) : (
+                <img
+                  className="w-full h-[400px] object-cover"
+                  src="https://img.freepik.com/vettori-premium/vettore-icona-immagine-predefinita-pagina-immagine-mancante-per-la-progettazione-di-siti-web-o-app-per-dispositivi-mobili-nessuna-foto-disponibile_87543-11093.jpg"
+                  alt="Immagine mancante"
+                />
+              )}
+            </div>
+
+            {/* galleria immagini */}
+            <div className="mb-8">
+              <h3 className="text-xl font-semibold mb-4">Galleria immagini</h3>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {poi.images ? (
+                  poi.images.map((image) => (
+                    <div
+                      key={image.id}
+                      className="rounded-lg overflow-hidden shadow-md"
+                    >
+                      <img
+                        src={`${import.meta.env.VITE_BE_IMG_URL}${image.path}`}
+                        alt={`Immagine della galleria di ${poi.name}`}
+                        className="w-full h-48 object-cover"
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <p className="text-gray-500">Nessuna immagine presente</p>
+                )}
+              </div>
+            </div>
+
+            {/* descrizione */}
+            {poi.description && (
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold mb-3">Descrizione</h3>
+                <p className="text-gray-700 leading-relaxed">
+                  {poi.description}
+                </p>
+              </div>
+            )}
+
+            {/* orari */}
+            <div className="mb-8">
+              {poi.days_of_week && <TimeTableComp days={poi.days_of_week} />}
+            </div>
           </div>
-        ) : (
-          ""
-        )}
 
-        {/* /periodo evento se presente */}
-
-        {/* tag */}
-        {poi.tags ? (
-          <div className="flex flex-wrap gap-2 items-center text-white mb-3">
-            {poi.tags.map((tag) => {
-              return (
-                <div
-                  key={tag.id}
-                  style={{ backgroundColor: tag.color }}
-                  className="px-3 py-1 rounded-lg"
-                >
-                  <i className="fa-solid fa-hashtag"></i> {tag.name}
+          <div className="lg:col-span-1">
+            {/* contatti */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-6 mb-8">
+              {poi.address && (
+                <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <h3 className="text-lg font-semibold mb-2">
+                    <i className="fa-solid fa-location-dot"></i> Indirizzo
+                  </h3>
+                  <p className="text-gray-700">{poi.address}</p>
                 </div>
-              );
-            })}
-          </div>
-        ) : (
-          <p className="text-red-700">Nessun tag associato</p>
-        )}
-        {/* /tag */}
+              )}
 
-        {/* immagine copertina */}
-        {poi.first_image ? (
-          <div>
-            <img
-              src={`${import.meta.env.VITE_BE_IMG_URL}${poi.first_image.path}`}
-              alt={`Immagine di copertina di ${poi.name}`}
-            />
-          </div>
-        ) : (
-          <div>
-            <img
-              className="w-full h-full object-cover"
-              src="https://img.freepik.com/vettori-premium/vettore-icona-immagine-predefinita-pagina-immagine-mancante-per-la-progettazione-di-siti-web-o-app-per-dispositivi-mobili-nessuna-foto-disponibile_87543-11093.jpg"
-              alt="Immagine mancante"
-            />
-          </div>
-        )}
-        {/* /immagine copertina */}
-
-        {/* galleria immagini */}
-        <h3>Galleria immagini</h3>
-        <div className="flex gap-2 flex-wrap">
-          {poi.images ? (
-            poi.images.map((image) => {
-              return (
-                <div>
-                  <img
-                    src={`${import.meta.env.VITE_BE_IMG_URL}${image.path}`}
-                    alt={`Immagine della galleria di ${poi.name}`}
-                  />
+              {poi.phone_number && (
+                <div className="bg-white p-4 rounded-lg shadow-sm truncate">
+                  <h3 className="text-lg font-semibold mb-2">
+                    <i className="fa-solid fa-phone"></i> Telefono
+                  </h3>
+                  <p className=" text-blue-500 truncate">
+                    <a
+                      href={`tel:${poi.phone_number}`}
+                      className="hover:text-blue-800"
+                    >
+                      {poi.phone_number}
+                    </a>
+                  </p>
                 </div>
-              );
-            })
-          ) : (
-            <p>Nessuna immagine presente</p>
-          )}
-        </div>
-        {/* /galleria immagini */}
+              )}
 
-        {/* descrizione */}
-        {poi.description && (
-          <div>
-            <h3>Descrizione</h3>
-            <p>{poi.description}</p>
+              {poi.email && (
+                <div className="bg-white p-4 rounded-lg shadow-sm truncate">
+                  <h3 className="text-lg font-semibold mb-2">
+                    <i className="fa-solid fa-envelope"></i> Email
+                  </h3>
+                  <p className=" text-blue-500 truncate">
+                    <a
+                      href={`mailto:${poi.email}`}
+                      className="hover:text-blue-800"
+                    >
+                      {poi.email}
+                    </a>
+                  </p>
+                </div>
+              )}
+
+              {poi.external_link && (
+                <div className="bg-white p-4 rounded-lg shadow-sm truncate">
+                  <h3 className="text-lg font-semibold mb-2">
+                    <i className="fa-solid fa-globe"></i> Sito Web/Pagina Social
+                  </h3>
+                  <p className=" text-blue-500 truncate">
+                    <a href={poi.external_link} className="hover:text-blue-800">
+                      {poi.external_link}
+                    </a>
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* mappa */}
+            {poi.latitude && poi.longitude && (
+              <div className="mb-8">
+                <h3 className="text-xl font-semibold mb-4">
+                  Posizione sulla mappa
+                </h3>
+                <div className="rounded-lg overflow-hidden shadow-lg h-[400px]">
+                  <iframe
+                    className="w-full h-full border-0"
+                    loading="lazy"
+                    allowFullScreen
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={`https://www.google.com/maps?q=${poi.latitude},${poi.longitude}&hl=it&z=14&output=embed`}
+                  ></iframe>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-        {/* /descrizione */}
-
-        {/* orari di apertura e chiusura */}
-        {poi.days_of_week && <TimeTableComp days={poi.days_of_week} />}
-        {/* /orari di apertura e chiusura */}
-
-        {/* contatti */}
-        <div>
-          {/* indirizzo */}
-          {poi.address && (
-            <div>
-              <h3>Indirizzo</h3>
-              <p>{poi.address}</p>
-            </div>
-          )}
-
-          {/* /indirizzo */}
-
-          {/* numero di telefono */}
-          {poi.phone_number && (
-            <div>
-              <h3>Telefono</h3>
-              <p>{poi.phone_number}</p>
-            </div>
-          )}
-
-          {/* /numero di telefono */}
-
-          {/* email */}
-          {poi.email && (
-            <div>
-              <h3>Email</h3>
-              <p>{poi.email}</p>
-            </div>
-          )}
-
-          {/* /email */}
-          {/* sito o social */}
-          {poi.external_link && (
-            <div>
-              <h3>Sito Web/Pagina Social</h3>
-              <p>{poi.external_link}</p>
-            </div>
-          )}
-
-          {/* /sito o social */}
-
-          {/* /contatti */}
         </div>
-        {/* mappa */}
-        {poi.latitude && poi.longitude ? (
-          <div>
-            <h3>Posizione sulla mappa</h3>
-            <iframe
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src={`https://www.google.com/maps?q=${poi.latitude},${poi.longitude}&hl=it&z=14&output=embed`}
-            ></iframe>
-          </div>
-        ) : (
-          ""
-        )}
-        {/* /mappa */}
-
-        {/* /container */}
       </div>
-    </>
+    </div>
   );
 }

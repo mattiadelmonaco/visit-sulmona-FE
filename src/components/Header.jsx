@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header className="bg-[#99031e] shadow-lg py-3">
       <div className="container px-10 mx-auto">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center flex-wrap">
           <div className="bg-white rounded-full py-2">
             <a href="/">
               <img
