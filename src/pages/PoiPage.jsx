@@ -4,14 +4,26 @@ import ListPoiComp from "../components/ListPoiComp";
 
 export default function PoiPage() {
   const [poiList, setPoiList] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchEveryPoi = () => {
-    axios.get(`${import.meta.env.VITE_BE_URL}/poi`).then((res) => {
-      setPoiList(res.data.data);
-    });
+    axios
+      .get(`${import.meta.env.VITE_BE_URL}/poi`)
+      .then((res) => {
+        setPoiList(res.data.data);
+      })
+      .finally(() => setIsLoading(false));
   };
 
   useEffect(fetchEveryPoi, []);
+
+  if (isLoading) {
+    return (
+      <div className="fixed inset-0 flex items-center justify-center text-4xl">
+        <i className="fa-solid fa-circle-notch fa-spin fa-3x text-[#99031e]"></i>
+      </div>
+    );
+  }
 
   return (
     <>

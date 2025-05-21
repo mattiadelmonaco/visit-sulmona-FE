@@ -35,20 +35,21 @@ export default function TimeTableComp({ days }) {
               } = day.pivot;
 
               const morning =
-                first_opening && first_closing
-                  ? `${first_opening.slice(0, 5)} - ${first_closing.slice(
-                      0,
-                      5
-                    )}`
-                  : "Chiuso";
+                first_opening && first_closing ? (
+                  `${first_opening.slice(0, 5)} - ${first_closing.slice(0, 5)}`
+                ) : (
+                  <span className="text-red-800 font-bold">Chiuso</span>
+                );
 
               const afternoon =
-                second_opening && second_closing
-                  ? `${second_opening.slice(0, 5)} - ${second_closing.slice(
-                      0,
-                      5
-                    )}`
-                  : "Chiuso";
+                second_opening && second_closing ? (
+                  `${second_opening.slice(0, 5)} - ${second_closing.slice(
+                    0,
+                    5
+                  )}`
+                ) : (
+                  <span className="text-red-800 font-bold">Chiuso</span>
+                );
 
               return (
                 <tr key={day.id} className="hover:bg-gray-50">
