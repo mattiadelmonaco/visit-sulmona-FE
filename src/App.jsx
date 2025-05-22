@@ -5,6 +5,7 @@ import PoiPage from "./pages/PoiPage";
 import SinglePoiPage from "./pages/SinglePoiPage";
 import PoiWithTypePage from "./pages/PoiWithTypePage";
 import PoiByMacroCategoryPage from "./pages/PoiByMacroCategoryPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
             path="poi-by-macro-category/:macroCategory"
             element={<PoiByMacroCategoryPage />}
           />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
