@@ -7,7 +7,7 @@ export default function Footer() {
           <div className="bg-white rounded-full py-5">
             <a href="/">
               <img
-                src="./images/visits-sulmona-logo.svg"
+                src="/images/visits-sulmona-logo.svg"
                 alt="Logo Visits Sulmona"
                 width="120px"
               />

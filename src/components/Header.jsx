@@ -1,14 +1,25 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
-import { Link, NavLink } from "react-router";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
   const [types, setTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState("");
+  const navigate = useNavigate();
 
   const fetchTypes = () => {
     axios.get(`${import.meta.env.VITE_BE_URL}/types`, {}).then((res) => {
       setTypes(res.data.data);
     });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (selectedType) {
+      navigate(`/poi/type/${selectedType}`);
+    } else {
+      navigate("/poi");
+    }
   };
 
   useEffect(fetchTypes, []);
@@ -18,16 +29,21 @@ export default function Header() {
       <div className="container px-10 mx-auto">
         <div className="flex justify-between items-center flex-wrap">
           <div className="bg-white rounded-full py-2">
-            <a href="/">
+            <Link to="/">
               <img
-                src="./images/visits-sulmona-logo.svg"
+                src="/images/visits-sulmona-logo.svg"
                 alt="Logo Visits Sulmona"
                 width="110px"
               />
-            </a>
+            </Link>
           </div>
-          <form>
-            <select name="types" id="types">
+          <form onSubmit={handleSubmit}>
+            <select
+              name="types"
+              id="types"
+              value={selectedType}
+              onChange={(e) => setSelectedType(e.target.value)}
+            >
               <option value="">---</option>
               {types.map((type) => {
                 return (

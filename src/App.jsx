@@ -3,6 +3,7 @@ import DefaultLayout from "./layouts/DefaultLayout";
 import HomePage from "./pages/HomePage";
 import PoiPage from "./pages/PoiPage";
 import SinglePoiPage from "./pages/SinglePoiPage";
+import PoiWithTypePage from "./pages/PoiWithTypePage";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="poi" element={<PoiPage />} />
           <Route path="poi/:id" element={<SinglePoiPage />} />
+          <Route path="poi/type/:typeId" element={<PoiWithTypePage />} />
         </Route>
       </Routes>
     </BrowserRouter>
