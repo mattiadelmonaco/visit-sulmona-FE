@@ -59,7 +59,7 @@ export default function Header() {
         </div>
       </div>
       <nav className="bg-white py-3 mt-3">
-        <ul className="flex gap-5 justify-center">
+        <ul className="flex gap-5 justify-center flex-wrap">
           <li>
             <NavLink to="/">HomePage</NavLink>
           </li>

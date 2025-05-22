@@ -17,7 +17,7 @@ export default function ListPoiComp({ poiList }) {
               >
                 <div className="aspect-video overflow-hidden">
                   {poi.first_image ? (
-                    <Link to={`/poi/${poi.id}`}>
+                    <Link to={`/single-poi/${poi.id}`}>
                       <img
                         className="w-full h-full object-cover"
                         src={`${import.meta.env.VITE_BE_IMG_URL}${

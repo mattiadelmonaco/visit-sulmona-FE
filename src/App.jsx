@@ -13,7 +13,7 @@ export default function App() {
         <Route element={<DefaultLayout />}>
           <Route index element={<HomePage />} />
           <Route path="poi" element={<PoiPage />} />
-          <Route path="poi/:id" element={<SinglePoiPage />} />
+          <Route path="single-poi/:id" element={<SinglePoiPage />} />
           <Route
             path="poi-by-type/type/:typeId"
             element={<PoiWithTypePage />}
