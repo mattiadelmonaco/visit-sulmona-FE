@@ -1,21 +1,28 @@
 import { useState, useEffect } from "react";
 import axios from "../api/axios";
 import ListPoiComp from "../components/ListPoiComp";
+import { useSearchParams } from "react-router";
 
 export default function PoiPage() {
   const [poiList, setPoiList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const limitFromUrl = parseInt(searchParams.get("limit")) || 10;
+  const [limit, setLimit] = useState(limitFromUrl);
+  const [totalPoi, setTotalPoi] = useState(0);
 
   const fetchEveryPoi = () => {
     axios
-      .get(`${import.meta.env.VITE_BE_URL}/poi`)
+      .get(`${import.meta.env.VITE_BE_URL}/poi?limit=${limit}`)
       .then((res) => {
+        setTotalPoi(res.data.totalPoi);
+        setSearchParams({ limit });
         setPoiList(res.data.data);
       })
       .finally(() => setIsLoading(false));
   };
 
-  useEffect(fetchEveryPoi, []);
+  useEffect(fetchEveryPoi, [limit]);
 
   if (isLoading) {
     return (
@@ -32,6 +39,35 @@ export default function PoiPage() {
           Tutte le Attrazioni e Attività che trovi in città
         </h1>
         <ListPoiComp poiList={poiList} />
+
+        <div className="flex justify-center gap-4 my-8">
+          <button
+            className={`${
+              limit <= 10 ? "hidden" : ""
+            } px-4 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition-colors duration-200 font-medium cursor-pointer`}
+            onClick={() => setLimit(limit - 10)}
+          >
+            -10
+          </button>
+
+          <button
+            className={`${
+              limit >= totalPoi ? "hidden" : ""
+            } px-4 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition-colors duration-200 font-medium cursor-pointer`}
+            onClick={() => setLimit(totalPoi)}
+          >
+            Mostra tutti
+          </button>
+
+          <button
+            className={`${
+              limit >= totalPoi ? "hidden" : ""
+            } px-4 py-2 bg-red-700 text-white rounded-lg hover:bg-red-800 transition-colors duration-200 font-medium cursor-pointer`}
+            onClick={() => setLimit(limit + 10)}
+          >
+            +10
+          </button>
+        </div>
       </div>
     </>
   );
