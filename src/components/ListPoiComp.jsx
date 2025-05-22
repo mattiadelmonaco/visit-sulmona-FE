@@ -3,8 +3,8 @@ import { Link } from "react-router";
 export default function ListPoiComp({ poiList }) {
   return (
     <>
-      <div className="container mx-auto p-8 bg-neutral-100 rounded-lg shadow-xl shadow-gray-400 ">
-        {poiList === 0 ? (
+      <div className="container mx-auto p-8 bg-neutral-100 rounded-lg shadow-xl shadow-gray-400 mb-15">
+        {poiList.length === 0 ? (
           <div className="text-center text-red-800 text-4xl font-bold">
             <h2>Nessuna attrazione o attività registrata</h2>
           </div>

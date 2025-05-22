@@ -16,7 +16,7 @@ export default function Header() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedType) {
-      navigate(`/poi/type/${selectedType}`);
+      navigate(`/poi-by-type/type/${selectedType}`);
     } else {
       navigate("/poi");
     }
@@ -65,6 +65,35 @@ export default function Header() {
           </li>
           <li>
             <NavLink to="/poi">Tutte le attrazioni e attività</NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/cultura">
+              Cultura e Storia
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/tempolibero">
+              Eventi e Tempo Libero
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/cibo">Cibo e Bevande</NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/ospitalità">Ospitalità</NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/commercio">Commercio</NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/comunità">
+              Servizi e Comunità
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/poi-by-macro-category/natura">
+              Natura e Outdoor
+            </NavLink>
           </li>
         </ul>
       </nav>

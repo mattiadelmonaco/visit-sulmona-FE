@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import PoiPage from "./pages/PoiPage";
 import SinglePoiPage from "./pages/SinglePoiPage";
 import PoiWithTypePage from "./pages/PoiWithTypePage";
+import PoiByMacroCategoryPage from "./pages/PoiByMacroCategoryPage";
 
 export default function App() {
   return (
@@ -13,7 +14,14 @@ export default function App() {
           <Route index element={<HomePage />} />
           <Route path="poi" element={<PoiPage />} />
           <Route path="poi/:id" element={<SinglePoiPage />} />
-          <Route path="poi/type/:typeId" element={<PoiWithTypePage />} />
+          <Route
+            path="poi-by-type/type/:typeId"
+            element={<PoiWithTypePage />}
+          />
+          <Route
+            path="poi-by-macro-category/:macroCategory"
+            element={<PoiByMacroCategoryPage />}
+          />
         </Route>
       </Routes>
     </BrowserRouter>
