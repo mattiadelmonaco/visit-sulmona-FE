@@ -60,9 +60,7 @@ export default function SinglePoiComp({ poi }) {
               <div className="mb-8 rounded-xl overflow-hidden shadow-lg">
                 {poi.first_image ? (
                   <img
-                    src={`${import.meta.env.VITE_BE_IMG_URL}${
-                      poi.first_image.path
-                    }`}
+                    src={`${import.meta.env.VITE_BE_IMG_URL}${poi.first_image}`}
                     alt={`Immagine di copertina di ${poi.name}`}
                     className="w-full h-[400px] object-cover"
                   />

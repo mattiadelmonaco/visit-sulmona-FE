@@ -16,12 +16,12 @@ export default function ListPoiComp({ poiList }) {
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
               >
                 <div className="aspect-video overflow-hidden">
-                  {poi.first_image && poi.first_image.path ? (
+                  {poi.first_image ? (
                     <Link to={`/poi/${poi.id}`}>
                       <img
                         className="w-full h-full object-cover"
                         src={`${import.meta.env.VITE_BE_IMG_URL}${
-                          poi.first_image.path
+                          poi.first_image
                         }`}
                         alt={`Immagine di copertina di ${poi.name}`}
                       />
