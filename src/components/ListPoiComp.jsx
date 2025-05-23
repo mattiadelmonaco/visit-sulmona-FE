@@ -41,7 +41,7 @@ export default function ListPoiComp({ poiList }) {
                     <div>
                       {poi.name && (
                         <Link to={`/poi/${poi.id}`}>
-                          <h3 className="text-2xl font-bold mb-3 text-gray-800 transition duration-300 hover:text-red-700 hover:scale-105">
+                          <h3 className="text-2xl font-bold mb-3 text-gray-800 transition duration-300 hover:text-red-700 hover:scale-102">
                             {poi.name}
                           </h3>
                         </Link>
