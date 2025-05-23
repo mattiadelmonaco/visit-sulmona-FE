@@ -19,7 +19,7 @@ export default function ListPoiComp({ poiList }) {
                   {poi.first_image ? (
                     <Link to={`/single-poi/${poi.id}`}>
                       <img
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition duration-900 hover:scale-120 cursor-pointer"
                         src={`${import.meta.env.VITE_BE_IMG_URL}${
                           poi.first_image
                         }`}
@@ -29,7 +29,7 @@ export default function ListPoiComp({ poiList }) {
                   ) : (
                     <Link to={`/poi/${poi.id}`}>
                       <img
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition duration-900 hover:scale-120 cursor-pointer"
                         src="https://img.freepik.com/vettori-premium/vettore-icona-immagine-predefinita-pagina-immagine-mancante-per-la-progettazione-di-siti-web-o-app-per-dispositivi-mobili-nessuna-foto-disponibile_87543-11093.jpg"
                         alt="Immagine mancante"
                       />
@@ -41,7 +41,7 @@ export default function ListPoiComp({ poiList }) {
                     <div>
                       {poi.name && (
                         <Link to={`/poi/${poi.id}`}>
-                          <h3 className="text-2xl font-bold mb-3 text-gray-800">
+                          <h3 className="text-2xl font-bold mb-3 text-gray-800 transition duration-300 hover:text-red-700 hover:scale-105">
                             {poi.name}
                           </h3>
                         </Link>
