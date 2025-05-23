@@ -29,9 +29,8 @@ export default function Header() {
 
   return (
     <header className="bg-[#99031e] shadow-lg">
-      {/* Top bar with logo and search */}
-      <div></div>
       <div className="container mx-auto px-6 py-4 flex justify-between items-center xl:px-20">
+        {/* tasto che apre modale */}
         <div className="sm:hidden pl-5">
           <button
             type="button"
@@ -41,7 +40,11 @@ export default function Header() {
             <i className="fa-solid fa-bars"></i>
           </button>
         </div>
+
+        {/* modale */}
         {isOpenNavbar && <NavbarModal setIsOpenNavbar={setIsOpenNavbar} />}
+
+        {/* logo */}
         <Link to="/" className="flex-shrink-0">
           <div className="bg-white rounded-lg p-2 shadow-md hover:shadow-lg transition-shadow">
             <img
@@ -52,6 +55,7 @@ export default function Header() {
           </div>
         </Link>
 
+        {/* filtro per tipologia su schermi grandi */}
         <div className="hidden sm:block">
           <form onSubmit={handleSubmit} className="flex items-center gap-4">
             <h3 className="text-white font-medium text-sm">
@@ -82,13 +86,15 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Main navigation */}
-      <div className="">
+      {/* navbar */}
+      <div>
         <nav className="bg-white">
+          {/* filtro su schermi piccoli */}
           <form
             onSubmit={handleSubmit}
             className="flex justify-center items-center gap-4 py-3 px-2 flex-wrap sm:hidden"
           >
+            {/* tasto per aprire filtro */}
             <div
               className="cursor-pointer text-[#99031e] font-medium text-sm border border-[#99031e] px-4 py-1.5 rounded 
               hover:bg-[#99031e] hover:text-white transition-colors duration-500"
@@ -99,6 +105,7 @@ export default function Header() {
               </h3>
             </div>
 
+            {/* filtro */}
             {isOpenFilter && (
               <div className="flex gap-3">
                 <select
@@ -125,6 +132,8 @@ export default function Header() {
               </div>
             )}
           </form>
+
+          {/* barra di navigazione su schermi grandi */}
           <div className="hidden sm:block">
             <ul className="container mx-auto px-6 py-3 flex gap-6 justify-center flex-wrap">
               <li>
