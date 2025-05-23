@@ -18,7 +18,6 @@ export default function SinglePoiComp({ poi }) {
     };
   }, [isOpen]);
 
-  console.log(poi);
   return (
     <>
       <div className="bg-gray-100 py-8 my-10 rounded-2xl shadow-xl">
