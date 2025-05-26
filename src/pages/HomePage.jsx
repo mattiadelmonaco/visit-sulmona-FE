@@ -1,5 +1,6 @@
 import Jumbotron from "../components/Jumbotron";
 import { Link } from "react-router";
+import BtnScrollToUp from "../components/BtnScrollToUp";
 
 export default function HomePage() {
   return (
@@ -310,6 +311,8 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        <BtnScrollToUp />
       </div>
     </>
   );
