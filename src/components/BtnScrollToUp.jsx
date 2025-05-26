@@ -5,7 +5,7 @@ export default function BtnScrollToUp() {
 
   useEffect(() => {
     const checkScrollTop = () => {
-      if (window.scrollY > 800) {
+      if (window.scrollY > 700) {
         setShowScroll(true);
       } else {
         setShowScroll(false);
