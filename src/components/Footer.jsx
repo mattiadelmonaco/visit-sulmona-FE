@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#99031e] shadow-2xl py-8 text-white">
+    <footer className="bg-[#670013] shadow-2xl py-8 text-white">
       <div className="container px-10 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 border-b-2 border-white py-6 mb-3">
           {/* Colonna 1: Logo e About */}
@@ -132,7 +132,7 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <p className="bg-white py-2 text-center text-[#99031e]">
+      <p className="bg-white py-2 text-center text-[#670013]">
         Made with <i className="fa-solid fa-heart"></i> by Mattia | © 2025
         Visits Sulmona
       </p>
