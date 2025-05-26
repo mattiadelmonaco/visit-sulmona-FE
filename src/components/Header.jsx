@@ -78,7 +78,7 @@ export default function Header() {
             <button
               type="submit"
               className="bg-white text-[#99031e] px-4 py-1.5 rounded font-medium text-sm 
-                     hover:bg-gray-100 transition-colors"
+                     hover:bg-gray-100 transition-colors cursor-pointer"
             >
               Cerca
             </button>
