@@ -1,40 +1,140 @@
-export default function Footer() {
-  return (
-    <footer className="bg-[#99031e] shadow-2xl py-3">
-      <div className="container px-10 mx-auto">
-        <div className="flex justify-between items-center border-b-2 border-white py-3 mb-3">
-          {/* logo */}
-          <div className="bg-white rounded-full py-5">
-            <a href="/">
-              <img
-                src="/images/visits-sulmona-logo.svg"
-                alt="Logo Visits Sulmona"
-                width="120px"
-              />
-            </a>
-          </div>
-          {/* /logo */}
-          <ul>
-            <h3>Link utili</h3>
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
-            <li>
-              <a href="#">link 1</a>
-            </li>
-            <li>
-              <a href="#">link 2</a>
-            </li>
-            <li>
-              <a href="#">link 3</a>
-            </li>
-            <li>
-              <a href="#">link 4</a>
-            </li>
-          </ul>
-          <h1>Footer</h1>
+export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleScrollToSection = (e) => {
+    e.preventDefault();
+    if (location.pathname !== "/") {
+      // se non siamo in home, prima navighiamo alla home
+      navigate("/");
+      // aspettiamo che il DOM si aggiorni prima di scrollare
+      setTimeout(() => {
+        const element = document.getElementById("come-raggiungerci");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 100);
+    } else {
+      // se siamo già in home, scrolliamo direttamente
+      const element = document.getElementById("come-raggiungerci");
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
+  return (
+    <footer className="bg-[#99031e] shadow-2xl py-8 text-white">
+      <div className="container px-10 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 border-b-2 border-white py-6 mb-3">
+          {/* Colonna 1: Logo e About */}
+          <div className="md:col-span-2 lg:col-span-4 flex flex-col items-center">
+            <div className="bg-white rounded-full py-5 w-fit mb-4">
+              <Link to="/">
+                <img
+                  src="/images/visits-sulmona-logo.svg"
+                  alt="Logo Visits Sulmona"
+                  width="120px"
+                />
+              </Link>
+            </div>
+            <p className="text-sm text-center max-w-[280px]">
+              Scopri la bellezza di Sulmona, una città ricca di storia, cultura
+              e tradizioni nel cuore dell'Abruzzo.
+            </p>
+          </div>
+
+          <div className="md:col-span-2 lg:col-span-7 flex flex-col sm:flex-row sm:justify-around">
+            {/* Colonna 2: Link utili */}
+            <div className="mb-6 sm:mb-0">
+              <h3 className="text-xl font-bold mb-4">Link utili</h3>
+              <ul className="space-y-2">
+                <li>
+                  <Link to="/" className="hover:underline">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/poi-by-macro-category/ospitalità"
+                    className="hover:underline"
+                  >
+                    Dove Alloggiare
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/poi-by-macro-category/cibo"
+                    className="hover:underline"
+                  >
+                    Cibo e Bevande
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/poi-by-macro-category/cultura"
+                    className="hover:underline"
+                  >
+                    Cultura e Storia
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/poi-by-macro-category/tempolibero"
+                    className="hover:underline"
+                  >
+                    Eventi
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    href="#come-raggiungerci"
+                    onClick={handleScrollToSection}
+                    className="hover:underline"
+                  >
+                    Come Arrivare
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Colonna 3: Contatti */}
+            <div>
+              <h3 className="text-xl font-bold mb-4">Contattaci</h3>
+              <div className="space-y-2">
+                <p>
+                  <i className="fa-solid fa-location-dot mr-2"></i>Sulmona (AQ),
+                  Italia
+                </p>
+                <p>
+                  <i className="fa-solid fa-envelope mr-2"></i>
+                  info@visitsulmona.it
+                </p>
+                <p>
+                  <i className="fa-solid fa-phone mr-2"></i>+39 0864 123456
+                </p>
+
+                <div className="mt-4 space-x-4 flex justify-self-center sm:justify-self-start">
+                  <a href="#" className="text-2xl hover:text-gray-300">
+                    <i className="fab fa-facebook"></i>
+                  </a>
+                  <a href="#" className="text-2xl hover:text-gray-300">
+                    <i className="fab fa-instagram"></i>
+                  </a>
+                  <a href="#" className="text-2xl hover:text-gray-300">
+                    <i className="fab fa-x-twitter"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <p className="bg-white py-1 text-center">
-        Made with <i className="fa-solid fa-heart"></i> by Mattia
+      <p className="bg-white py-2 text-center text-[#99031e]">
+        Made with <i className="fa-solid fa-heart"></i> by Mattia | © 2025
+        Visits Sulmona
       </p>
     </footer>
   );

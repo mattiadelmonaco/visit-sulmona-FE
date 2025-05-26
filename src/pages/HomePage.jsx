@@ -272,7 +272,7 @@ export default function HomePage() {
         </section>
 
         {/* Come Raggiungerci */}
-        <section className="py-12 bg-gray-100">
+        <section id="come-raggiungerci" className="py-12 bg-gray-100">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               Come Raggiungerci
