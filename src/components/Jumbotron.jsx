@@ -4,6 +4,7 @@ export default function Jumbotron() {
   const [isPlaying, setIsPlaying] = useState(true);
   const videoRef = useRef(null);
 
+  // funzione per mettere in pausa o in play il video
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {

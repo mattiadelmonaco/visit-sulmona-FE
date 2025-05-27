@@ -6,11 +6,13 @@ export default function SinglePoiComp({ poi }) {
 
   const [selectedImage, setSelectedImage] = useState(null);
 
+  // per aprire modale immagine
   const openModal = (image) => {
     setSelectedImage(image);
     setIsOpen(true);
   };
 
+  // per bloccare scorrimento della pagina quando la modale è aperta
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "auto";
     return () => {

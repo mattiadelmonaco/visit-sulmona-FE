@@ -4,6 +4,7 @@ export default function Footer() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // per arrivare direttamente alla sezione come-raggiungerci
   const handleScrollToSection = (e) => {
     e.preventDefault();
     if (location.pathname !== "/") {
@@ -29,7 +30,7 @@ export default function Footer() {
     <footer className="bg-[#670013] shadow-2xl pb-4 text-white">
       <div className="container px-10 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 border-b-2 border-white py-6 mb-3">
-          {/* Colonna 1: Logo e About */}
+          {/* Colonna 1: Logo e intro */}
           <div className="md:col-span-2 lg:col-span-4 flex flex-col items-center">
             <div className="bg-white rounded-full py-5 w-fit mb-4">
               <Link to="/">
@@ -130,7 +131,7 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* link esterni */}
+            {/* Colonna 4: link esterni */}
             <div className="mb-6 sm:mb-0">
               <h3 className="text-xl font-bold mb-1">Link esterni</h3>
               <ul className="space-y-2">

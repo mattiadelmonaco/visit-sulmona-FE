@@ -1,10 +1,12 @@
 export default function TimeTableComp({ days }) {
+  // per prima cosa vedo se ci sono gli orari, se ci sono restituisco le colonne con gli orari
   const hasOrari = days.some((day) => {
     const { first_opening, first_closing, second_opening, second_closing } =
       day.pivot;
     return first_opening || first_closing || second_opening || second_closing;
   });
 
+  // se non ci sono orari non mostro la tabella
   if (!hasOrari) return null;
 
   return (

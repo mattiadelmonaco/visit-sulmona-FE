@@ -30,7 +30,7 @@ export default function PoiByMacroCategoryPage() {
 
   if (isLoading)
     return (
-      <div className="fixed inset-0 flex items-center justify-center text-4xl">
+      <div className="mt-20 flex items-center justify-center text-4xl">
         <i className="fa-solid fa-circle-notch fa-spin fa-3x text-[#99031e]"></i>
       </div>
     );

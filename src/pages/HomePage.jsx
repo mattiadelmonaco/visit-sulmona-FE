@@ -4,22 +4,29 @@ import { Link } from "react-router";
 
 export default function HomePage() {
   useEffect(() => {
+    // funzione chiamata quando un elemento osservato entra o esce dalla viewport
     const handleIntersect = (entries) => {
       entries.forEach((entry) => {
+        // se l'elemento è visibile per almeno il 10% aggiunge la classe reveal-active
         if (entry.isIntersecting) {
           entry.target.classList.add("reveal-active");
         }
       });
     };
 
+    // crea un nuovo IntersectionObserver
     const observer = new IntersectionObserver(handleIntersect, {
-      threshold: 0.1,
-      rootMargin: "-50px",
+      threshold: 0.1, // l'elemento è visibile se almeno il 10% (0.1) è nella viewport
+      rootMargin: "-50px", // sposta l'area di osservazione 50px più dentro, serve per anticipare o ritardare l'effetto
     });
 
+    // seleziona tutti gli elementi con classe reveal
     const sections = document.querySelectorAll(".reveal");
+
+    // ogni elemento trovato è osservato da observer
     sections.forEach((section) => observer.observe(section));
 
+    // quando il componente viene smontato si disconnette l'observer (cleanup)
     return () => observer.disconnect();
   }, []);
 
