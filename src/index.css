@@ -118,7 +118,8 @@ header nav li:hover {
   }
 }
 
-.animate-slide-right, .animate-slide-left {
+.animate-slide-right,
+.animate-slide-left {
   animation-duration: 0.8s;
   animation-fill-mode: forwards;
   animation-timing-function: ease-out;
