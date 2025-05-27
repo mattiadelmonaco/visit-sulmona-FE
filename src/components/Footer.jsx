@@ -111,10 +111,15 @@ export default function Footer() {
                 </p>
                 <p>
                   <i className="fa-solid fa-envelope mr-2"></i>
-                  info@visitsulmona.it
+                  <a href="mailto:#" className="hover:underline">
+                    info@visitsulmona.it
+                  </a>
                 </p>
                 <p>
-                  <i className="fa-solid fa-phone mr-2"></i>+39 0864 123456
+                  <i className="fa-solid fa-phone mr-2"></i>
+                  <a href="tel:#" className="hover:underline">
+                    +39 0864 123456
+                  </a>
                 </p>
 
                 <div className="mt-4 space-x-4 flex ">
