@@ -78,3 +78,75 @@ header nav li:hover {
   transition: 0.6s;
   color: white;
 }
+
+/* Animazione fade-in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-right {
+  animation: slideInRight 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+.animate-slide-left {
+  animation: slideInLeft 0.8s ease-out forwards;
+  will-change: transform, opacity;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Modifichiamo la classe reveal per l'animazione */
+.reveal {
+  transform: translateY(50px);
+  opacity: 0;
+  transition: transform 1s ease, opacity 1s ease;
+}
+
+.reveal.reveal-active {
+  transform: translateY(0);
+  opacity: 1;
+}

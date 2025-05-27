@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 export default function ListPoiComp({ poiList }) {
   return (
@@ -10,10 +10,14 @@ export default function ListPoiComp({ poiList }) {
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {poiList.map((poi) => (
+            {poiList.map((poi, index) => (
               <div
                 key={poi.id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in"
+                style={{
+                  animationDelay: `${index * 0.15}s`,
+                  opacity: 0,
+                }}
               >
                 <div className="aspect-video overflow-hidden">
                   {poi.first_image ? (

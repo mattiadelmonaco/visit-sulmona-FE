@@ -1,14 +1,35 @@
+import { useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import { Link } from "react-router";
 
 export default function HomePage() {
+  useEffect(() => {
+    const handleIntersect = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("reveal-active");
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(handleIntersect, {
+      threshold: 0.1,
+      rootMargin: "-50px",
+    });
+
+    const sections = document.querySelectorAll(".reveal");
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <div className="min-h-screen bg-gray-100">
         <Jumbotron />
 
         {/* Introduzione */}
-        <div className="max-w-4xl mx-auto my-8">
+        <div className="max-w-4xl mx-auto my-8 reveal">
           <p className="text-center text-2xl text-neutral-600 px-6 py-8 leading-relaxed">
             Sulmona, città d'arte nel cuore dell'Abruzzo, è famosa per i suoi
             confetti, la poesia di Ovidio e le sue bellezze architettoniche.
@@ -18,7 +39,7 @@ export default function HomePage() {
         </div>
 
         {/* Storia */}
-        <section className="bg-white py-12">
+        <section className="bg-white py-12 reveal">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               Storia
@@ -44,7 +65,7 @@ export default function HomePage() {
         </section>
 
         {/* Attrazioni */}
-        <section className="py-12 bg-gray-100">
+        <section className="py-12 bg-gray-100 reveal">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               Luoghi da Visitare
@@ -143,7 +164,7 @@ export default function HomePage() {
         </section>
 
         {/* Confetti */}
-        <section className="bg-white py-12">
+        <section className="bg-white py-12 reveal">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               I Famosi Confetti
@@ -170,7 +191,7 @@ export default function HomePage() {
         </section>
 
         {/* Eventi e Tradizioni */}
-        <section className="py-12 bg-gray-100">
+        <section className="py-12 bg-gray-100 reveal">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               Eventi e Tradizioni
@@ -218,7 +239,7 @@ export default function HomePage() {
         </section>
 
         {/* Gastronomia */}
-        <section className="bg-white py-12">
+        <section className="bg-white py-12 reveal">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               Sapori Tipici
@@ -272,7 +293,7 @@ export default function HomePage() {
         </section>
 
         {/* Come Raggiungerci */}
-        <section id="come-raggiungerci" className="py-12 bg-gray-100">
+        <section id="come-raggiungerci" className="py-12 bg-gray-100 reveal">
           <div className="container mx-auto px-6">
             <h2 className="text-4xl font-bold text-center mb-8 text-red-800 border-b border-neutral-200 pb-3">
               Come Raggiungerci

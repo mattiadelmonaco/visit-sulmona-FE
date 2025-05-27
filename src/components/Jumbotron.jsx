@@ -34,9 +34,9 @@ export default function Jumbotron() {
           className="absolute bottom-14 right-4 bg-white bg-opacity-50 p-2 rounded-full hover:bg-opacity-75 transition-all cursor-pointer"
         >
           {isPlaying ? (
-            <i class="fa-solid fa-pause text-[#99031e] px-2"></i>
+            <i className="fa-solid fa-pause text-[#99031e] px-2"></i>
           ) : (
-            <i class="fa-solid fa-play text-[#99031e] px-2"></i>
+            <i className="fa-solid fa-play text-[#99031e] px-2"></i>
           )}
         </button>
         <p className="absolute bottom-4 right-4 text-sm text-white">
