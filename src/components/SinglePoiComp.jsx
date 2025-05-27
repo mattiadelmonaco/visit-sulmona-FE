@@ -80,7 +80,7 @@ export default function SinglePoiComp({ poi }) {
                   Galleria immagini
                 </h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {poi.images ? (
+                  {poi.images.length > 0 ? (
                     poi.images.map((image) => (
                       <div
                         key={image.id}
@@ -97,7 +97,9 @@ export default function SinglePoiComp({ poi }) {
                       </div>
                     ))
                   ) : (
-                    <p className="text-gray-500">Nessuna immagine presente</p>
+                    <div className="col-span-2">
+                      <p className="text-gray-500">Nessuna immagine presente</p>
+                    </div>
                   )}
                 </div>
               </div>
