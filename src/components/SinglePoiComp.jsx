@@ -23,7 +23,10 @@ export default function SinglePoiComp({ poi }) {
       <div className="bg-gray-100 py-8 my-10 rounded-2xl shadow-xl">
         <div className="container mx-auto px-4 md:px-10 max-w-7xl">
           <div className="lg:grid lg:grid-cols-3 lg:gap-8">
-            <div className="lg:col-span-2 animate-slide-left" style={{ opacity: 0 }}>
+            <div
+              className="lg:col-span-2 animate-slide-left"
+              style={{ opacity: 0 }}
+            >
               {/* nome e tipologia */}
               <div className="flex flex-col md:flex-row md:items-center md:gap-4 mb-6">
                 {poi.name && (
@@ -116,7 +119,10 @@ export default function SinglePoiComp({ poi }) {
               </div>
             </div>
 
-            <div className="lg:col-span-1 animate-slide-right" style={{ opacity: 0 }}>
+            <div
+              className="lg:col-span-1 animate-slide-right"
+              style={{ opacity: 0 }}
+            >
               {/* periodo e contatti */}
               <div className="grid md:grid-cols-2 lg:grid-cols-1 gap-6 mb-8">
                 {/* periodo evento se presente */}
