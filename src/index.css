@@ -97,35 +97,41 @@ header nav li:hover {
 }
 
 @keyframes slideInRight {
-  from {
+  0% {
     opacity: 0;
     transform: translateX(30px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
 @keyframes slideInLeft {
-  from {
+  0% {
     opacity: 0;
     transform: translateX(-30px);
   }
-  to {
+  100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
+.animate-slide-right, .animate-slide-left {
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .animate-slide-right {
-  animation: slideInRight 0.8s ease-out forwards;
-  will-change: transform, opacity;
+  animation-name: slideInRight;
 }
 
 .animate-slide-left {
-  animation: slideInLeft 0.8s ease-out forwards;
-  will-change: transform, opacity;
+  animation-name: slideInLeft;
 }
 
 @keyframes slideInUp {
