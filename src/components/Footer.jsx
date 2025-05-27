@@ -26,7 +26,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#670013] shadow-2xl py-8 text-white">
+    <footer className="bg-[#670013] shadow-2xl pb-4 text-white">
       <div className="container px-10 mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 border-b-2 border-white py-6 mb-3">
           {/* Colonna 1: Logo e About */}
@@ -46,10 +46,10 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="md:col-span-2 lg:col-span-7 flex flex-col sm:flex-row sm:justify-around">
+          <div className="md:col-span-2 lg:col-span-7 flex flex-col sm:flex-row sm:justify-between">
             {/* Colonna 2: Link utili */}
             <div className="mb-6 sm:mb-0">
-              <h3 className="text-xl font-bold mb-4">Link utili</h3>
+              <h3 className="text-xl font-bold mb-1">Link utili</h3>
               <ul className="space-y-2">
                 <li>
                   <Link to="/" className="hover:underline">
@@ -101,8 +101,8 @@ export default function Footer() {
             </div>
 
             {/* Colonna 3: Contatti */}
-            <div>
-              <h3 className="text-xl font-bold mb-4">Contattaci</h3>
+            <div className="mb-6 sm:mb-0">
+              <h3 className="text-xl font-bold mb-1">Contattaci</h3>
               <div className="space-y-2">
                 <p>
                   <i className="fa-solid fa-location-dot mr-2"></i>Sulmona (AQ),
@@ -116,7 +116,7 @@ export default function Footer() {
                   <i className="fa-solid fa-phone mr-2"></i>+39 0864 123456
                 </p>
 
-                <div className="mt-4 space-x-4 flex justify-self-center sm:justify-self-start">
+                <div className="mt-4 space-x-4 flex ">
                   <a href="#" className="text-2xl hover:text-gray-300">
                     <i className="fab fa-facebook"></i>
                   </a>
@@ -128,6 +128,37 @@ export default function Footer() {
                   </a>
                 </div>
               </div>
+            </div>
+
+            {/* link esterni */}
+            <div className="mb-6 sm:mb-0">
+              <h3 className="text-xl font-bold mb-1">Link esterni</h3>
+              <ul className="space-y-2">
+                <li>
+                  <a
+                    href="https://comune.sulmona.aq.it/"
+                    className="hover:underline"
+                  >
+                    Comune di Sulmona
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.abruzzoturismo.it/it/magazine/sulmona-la-splendida-citta-dei-confetti"
+                    className="hover:underline"
+                  >
+                    Regione Abruzzo
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://it.wikipedia.org/wiki/Sulmona"
+                    className="hover:underline"
+                  >
+                    Wikipedia
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
