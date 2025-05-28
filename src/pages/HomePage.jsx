@@ -126,7 +126,7 @@ export default function HomePage() {
                 to="/poi-by-macro-category/cultura"
                 className="bg-white px-5 py-2 sm:text-2xl rounded-md hover:bg-[#99031e] hover:text-white transition duration-500"
               >
-                Tutti i luoghi storici e di cultura
+                Vai a "Cultura e Storia"
               </Link>
             </div>
 
@@ -239,7 +239,7 @@ export default function HomePage() {
                 to="/poi-by-macro-category/tempolibero"
                 className="bg-white px-5 py-2 sm:text-2xl rounded-md hover:bg-[#99031e] hover:text-white transition duration-500"
               >
-                Eventi e Tempo libero
+                Vai a "Eventi e Tempo libero"
               </Link>
             </div>
           </div>
@@ -293,7 +293,7 @@ export default function HomePage() {
                 to="/poi-by-macro-category/cibo"
                 className="bg-neutral-200 px-5 py-2 sm:text-2xl rounded-md hover:bg-[#99031e] hover:text-white transition duration-500"
               >
-                Dove mangiare e bere
+                Vai a "Cibo e Bevande"
               </Link>
             </div>
           </div>
