@@ -9,6 +9,7 @@ export default function PoiPage() {
   const [searchParams, setSearchParams] = useSearchParams();
   const limitFromUrl = parseInt(searchParams.get("limit")) || 10;
   const [limit, setLimit] = useState(limitFromUrl);
+  const [prevLimit, setPrevLimit] = useState(0);
   const [totalPoi, setTotalPoi] = useState(0);
 
   const fetchEveryPoi = () => {
@@ -18,6 +19,7 @@ export default function PoiPage() {
         setTotalPoi(res.data.totalPoi);
         setSearchParams({ limit });
         setPoiList(res.data.data);
+        setPrevLimit(Math.max(limit - 10, 0));
       })
       .finally(() => setIsLoading(false));
   };
@@ -38,7 +40,7 @@ export default function PoiPage() {
         <h1 className="text-3xl md:text-4xl text-center font-bold text-red-700 py-10">
           Tutte le Attrazioni e Attività che trovi in città
         </h1>
-        <ListPoiComp poiList={poiList} />
+        <ListPoiComp poiList={poiList} prevLimit={prevLimit} />
 
         <div className="flex justify-center gap-4 my-8">
           <button

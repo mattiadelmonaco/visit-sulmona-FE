@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export default function ListPoiComp({ poiList }) {
+export default function ListPoiComp({ poiList, prevLimit }) {
   return (
     <>
       <div className="container mx-auto p-8 bg-neutral-100 rounded-lg shadow-xl shadow-gray-400 mb-15">
@@ -15,8 +15,10 @@ export default function ListPoiComp({ poiList }) {
                 key={poi.id}
                 className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 animate-fade-in"
                 style={{
-                  animationDelay: `${index * 0.15}s`,
-                  opacity: 0,
+                  animationDelay: `${
+                    index < prevLimit ? 0 : (index - prevLimit) * 0.15
+                  }s`,
+                  opacity: index < prevLimit ? 1 : 0,
                 }}
               >
                 <div className="aspect-video overflow-hidden">
